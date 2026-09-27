@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Despesa extends Transacao{
 
-    public Despesa(BigDecimal valor, LocalDate data, String categoria, String descricao, String formaDePagamento){
+    public Despesa(BigDecimal valor, LocalDate data, Categoria categoria, String descricao, String formaDePagamento){
         super(valor, data, categoria, descricao, formaDePagamento);
     }
 

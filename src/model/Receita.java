@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Receita extends Transacao{
 
-    public Receita(BigDecimal valor, LocalDate data, String categoria, String descricao, String formaDePagamento){
+    public Receita(BigDecimal valor, LocalDate data, Categoria categoria, String descricao, String formaDePagamento){
         super(valor, data, categoria, descricao, formaDePagamento);
     }
 

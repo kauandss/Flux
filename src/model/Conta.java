@@ -33,7 +33,7 @@ public class Conta {
         List<Transacao> transacoesFiltradas = new ArrayList<>();
 
         for (Transacao transacaoAtual : transacoes) {
-            if(transacaoAtual.getCategoria().equalsIgnoreCase(nomeDaCategoria)){
+            if(transacaoAtual.getCategoria().getNome().equalsIgnoreCase(nomeDaCategoria)){
                 transacoesFiltradas.add(transacaoAtual);
             }
         }

@@ -6,11 +6,11 @@ import java.time.LocalDate;
 public abstract class Transacao {
     protected BigDecimal valor;
     protected String descricao;
-    protected String categoria;
+    protected Categoria categoria;
     protected String formaDePagamento;
     protected LocalDate data;
 
-    public Transacao(BigDecimal valor, LocalDate data, String categoria, String descricao, String formaDePagamento) {
+    public Transacao(BigDecimal valor, LocalDate data, Categoria categoria, String descricao, String formaDePagamento) {
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
@@ -18,7 +18,7 @@ public abstract class Transacao {
         this.formaDePagamento = formaDePagamento;
     }
 
-    public Transacao(BigDecimal valor, LocalDate data, String categoria, String descricao) {
+    public Transacao(BigDecimal valor, LocalDate data, Categoria categoria, String descricao) {
         this(valor, data, categoria, descricao, null);
     }
 
@@ -36,7 +36,7 @@ public abstract class Transacao {
         return descricao;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 

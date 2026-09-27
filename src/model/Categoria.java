@@ -10,4 +10,16 @@ public class Categoria {
         this.descricao = descricao;
         this.tipo = tipo;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public TipoCategoria getTipo() {
+        return tipo;
+    }
 }
