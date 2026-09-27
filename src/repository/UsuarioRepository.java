@@ -12,7 +12,16 @@ public class UsuarioRepository {
         this.usuariosCadastrados = new ArrayList<>();
     }
 
-    public void salvarUsuario(Usuario usuario){
+    public void salvarUsuario(Usuario usuario) {
         usuariosCadastrados.add(usuario);
+    }
+
+    public Usuario buscarPorEmail(String email) {
+        for (Usuario usuarioAtual : usuariosCadastrados) {
+            if (usuarioAtual.getEmail().equalsIgnoreCase(email)) {
+                return usuarioAtual;
+            }
+        }
+        return null;
     }
 }

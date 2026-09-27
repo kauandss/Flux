@@ -12,4 +12,20 @@ public class Usuario {
         this.senha = senha;
         this.conta = new Conta();
     }
+
+    public String getNomeDeUsuario() {
+        return nomeDeUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public Conta getConta() {
+        return conta;
+    }
 }
