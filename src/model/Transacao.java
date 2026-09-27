@@ -10,16 +10,11 @@ public abstract class Transacao {
     protected String formaDePagamento;
     protected LocalDate data;
 
-    public Transacao(BigDecimal valor, LocalDate data, Categoria categoria, String descricao, String formaDePagamento) {
+    public Transacao(BigDecimal valor, LocalDate data, Categoria categoria, String descricao) {
         this.valor = valor;
         this.data = data;
         this.categoria = categoria;
         this.descricao = descricao;
-        this.formaDePagamento = formaDePagamento;
-    }
-
-    public Transacao(BigDecimal valor, LocalDate data, Categoria categoria, String descricao) {
-        this(valor, data, categoria, descricao, null);
     }
 
     public abstract BigDecimal valorComSinal();

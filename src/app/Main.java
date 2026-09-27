@@ -13,21 +13,23 @@ public class Main {
         Conta minhaConta = usuario.getConta();
         int opcao;
 
-        Categoria catAlimentacao = new Categoria("Alimentação","delivery",TipoCategoria.DESPESA);
-        Categoria catTransporte = new Categoria("Transporte","transporte público",TipoCategoria.DESPESA);
-        Categoria catLazer = new Categoria("Lazer","entretenimento",TipoCategoria.DESPESA);
-        Categoria catOutros = new Categoria("Outros","...",TipoCategoria.DESPESA);
+        Categoria catAlimentacao = new Categoria("Alimentação", "delivery", TipoCategoria.DESPESA);
+        Categoria catTransporte = new Categoria("Transporte", "transporte público", TipoCategoria.DESPESA);
+        Categoria catLazer = new Categoria("Lazer", "entretenimento", TipoCategoria.DESPESA);
+        Categoria catOutros = new Categoria("Outros", "...", TipoCategoria.DESPESA);
 
-        Categoria catSalario = new Categoria("Salário","remuneração recebida pelo trabalho",
+        Categoria catSalario = new Categoria("Salário", "remuneração recebida pelo trabalho",
                 TipoCategoria.RECEITA);
-        Categoria catRendaExtra = new Categoria("Renda Extra","valores obtidos com atv. complementares",
+        Categoria catRendaExtra = new Categoria("Renda Extra", "valores obtidos com atv. complementares",
                 TipoCategoria.RECEITA);
 
-        do{
-            System.out.println("Ex: 1- Nova Despesa | 2- Ver Saldo | 3- Nova Receita | 0- Sair");
+        do {
+            System.out.println("Ex: 1- Nova Despesa | 2- Ver Saldo | 3- Nova Receita | 4- Filtrar por Categoria |" +
+                    " 0- Sair");
             opcao = entrada.nextInt();
+            entrada.nextLine();
 
-            switch(opcao){
+            switch (opcao) {
                 case 1:
                     System.out.println("Categoria: 1- Alimentação | 2- Transporte | 3- Lazer");
                     int opcaoCategoriaDespesa = entrada.nextInt();
@@ -48,8 +50,8 @@ public class Main {
                         default -> catOutros;
                     };
 
-                    Despesa despesa = new Despesa(valorDespesa, LocalDate.now(),categoriaDespesa,
-                            descricaoDespesa,formaDePagamentoDespesa);
+                    Despesa despesa = new Despesa(valorDespesa, LocalDate.now(), categoriaDespesa,
+                            descricaoDespesa, formaDePagamentoDespesa);
 
                     minhaConta.adicionarTransacao(despesa);
                     break;
@@ -67,8 +69,6 @@ public class Main {
                     entrada.nextLine();
                     System.out.println("Descrição: ");
                     String descricaoReceita = entrada.nextLine();
-                    System.out.println("Forma de recebimento: ");
-                    String formaDeRecebimentoReceita = entrada.nextLine();
                     System.out.println("Criando Receita...");
 
                     Categoria categoriaReceita = switch (opcaoCategoriaReceitas) {
@@ -77,14 +77,22 @@ public class Main {
                         default -> catOutros;
                     };
 
-                    Receita receita = new Receita(valorReceita, LocalDate.now(),categoriaReceita,
-                            descricaoReceita,formaDeRecebimentoReceita);
+                    Receita receita = new Receita(valorReceita, LocalDate.now(), categoriaReceita,
+                            descricaoReceita);
 
                     minhaConta.adicionarTransacao(receita);
+                    break;
+                case 4:
+                    System.out.println("Digite o nome da categoria que deseja filtrar: ");
+                    String categoriaFiltro = entrada.nextLine();
+                    entrada.nextLine();
+
+                    System.out.println(minhaConta.filtrarPorCategoria(categoriaFiltro));
+                    break;
                 case 0:
                     System.out.println("Encerrando o Gerenciador!");
                     break;
             }
-        } while(opcao != 0);
+        } while (opcao != 0);
     }
 }
