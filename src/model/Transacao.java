@@ -47,4 +47,15 @@ public abstract class Transacao {
     public LocalDate getData() {
         return data;
     }
+
+    @Override
+    public String toString() {
+        return "Transacao{" +
+                "valor=" + valor +
+                ", descricao='" + descricao + '\'' +
+                ", categoria=" + categoria +
+                ", formaDePagamento='" + formaDePagamento + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

@@ -13,4 +13,15 @@ public class Despesa extends Transacao{
     public BigDecimal valorComSinal() {
         return this.valor.negate();
     }
+
+    @Override
+    public String toString() {
+        return "Despesa{" +
+                "valor=" + valor +
+                ", descricao='" + descricao + '\'' +
+                ", categoria=" + categoria +
+                ", formaDePagamento='" + formaDePagamento + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

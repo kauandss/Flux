@@ -22,4 +22,13 @@ public class Categoria {
     public TipoCategoria getTipo() {
         return tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", tipo=" + tipo +
+                '}';
+    }
 }
