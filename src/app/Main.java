@@ -24,7 +24,7 @@ public class Main {
                 TipoCategoria.RECEITA);
 
         do {
-            System.out.println("Ex: 1- Nova Despesa | 2- Ver Saldo | 3- Nova Receita | 4- Filtrar por Categoria |" +
+            System.out.println("\n1- Nova Despesa | 2- Ver Saldo | 3- Nova Receita | 4- Filtrar por Categoria |" +
                     " 0- Sair");
             opcao = entrada.nextInt();
             entrada.nextLine();
@@ -56,9 +56,11 @@ public class Main {
                     minhaConta.adicionarTransacao(despesa);
                     break;
                 case 2:
-                    System.out.println("Atualizando saldo...");
-                    System.out.println(minhaConta.calcularSaldoAtual());
-                    System.out.println(minhaConta.obterTodasTransacoes());
+                    System.out.println("\n--- Extrato ---");
+                    for(Transacao t : minhaConta.obterTodasTransacoes()){
+                        System.out.println(t);
+                    }
+                    System.out.printf("Saldo Total: R$ %.2f\n", minhaConta.calcularSaldoAtual());
                     break;
                 case 3:
                     System.out.println("Categoria: 1- Salário | 2- Renda Extra");
