@@ -4,38 +4,59 @@ import model.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
-        Usuario usuario = new Usuario("kauan","kauandss@gmail.com", "12345");
-
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        Usuario usuario = new Usuario("kauan", "kauandss@gmail.com", "12345");
         Conta minhaConta = usuario.getConta();
+        int opcao;
 
-        Categoria categoria1 = new Categoria("Transporte","Metrô - Transporte Público",
-                TipoCategoria.DESPESA);
+        Categoria catAlimentacao = new Categoria("Alimentação","delivery",TipoCategoria.DESPESA);
+        Categoria catTransporte = new Categoria("Transporte","transporte público",TipoCategoria.DESPESA);
+        Categoria catLazer = new Categoria("Lazer","entretenimento",TipoCategoria.DESPESA);
+        Categoria catOutros = new Categoria("Outros","...",TipoCategoria.DESPESA);
 
-        Categoria categoria2 = new Categoria("Alimentação","McDonald's",TipoCategoria.DESPESA);
+        do{
+            System.out.println("Ex: 1- Nova Despesa | 2- Ver Saldo | 0- Sair");
+            opcao = entrada.nextInt();
 
-        Categoria categoria3 = new Categoria("Lazer","Steam",
-                TipoCategoria.DESPESA);
+            switch(opcao){
+                case 1:
+                    System.out.println("Categoria: 1- Alimentação | 2- Transporte | 3- Lazer");
+                    int opcaoCategoria = entrada.nextInt();
+                    entrada.nextLine();
+                    System.out.println("Valor da despesa: ");
+                    BigDecimal valorDespesa = entrada.nextBigDecimal();
+                    entrada.nextLine();
+                    System.out.println("Descrição: ");
+                    String descricaoDespesa = entrada.nextLine();
+                    System.out.println("Forma de pagamento: ");
+                    String formaDePagamentoDespesa = entrada.nextLine();
+                    System.out.println("Criando Despesa...");
 
+                    Categoria categoria = switch (opcaoCategoria) {
+                        case 1 -> catAlimentacao;
+                        case 2 -> catTransporte;
+                        case 3 -> catLazer;
+                        default -> catOutros;
+                    };
 
+                    Despesa despesa = new Despesa(valorDespesa, LocalDate.now(),categoria,
+                            descricaoDespesa,formaDePagamentoDespesa);
 
-        Despesa despesa1 = new Despesa(BigDecimal.valueOf(20.00), LocalDate.of(2026, 9, 27),
-                categoria1, "Coloquei R$20,00 no bilhete único", "Débito");
-
-        Despesa despesa2 = new Despesa(BigDecimal.valueOf(45.00),LocalDate.of(2026,8,17),
-                categoria2,"Comprei um McDonald's no shopping","Débito");
-
-        Despesa despesa3 = new Despesa(BigDecimal.valueOf(12.00),LocalDate.of(2026,7,24),
-                categoria3,"Comprei o Stardew Valley","Pix");
-
-        minhaConta.adicionarTransacao(despesa1);
-        minhaConta.adicionarTransacao(despesa2);
-        minhaConta.adicionarTransacao(despesa3);
-
-        System.out.println(minhaConta.calcularSaldoAtual());
-        System.out.println(minhaConta.obterTodasTransacoes());
-        System.out.println(minhaConta.filtrarPorCategoria("Lazer"));
+                    minhaConta.adicionarTransacao(despesa);
+                    break;
+                case 2:
+                    System.out.println("Atualizando saldo...");
+                    System.out.println(minhaConta.calcularSaldoAtual());
+                    System.out.println(minhaConta.obterTodasTransacoes());
+                    break;
+                case 0:
+                    System.out.println("Encerrando o Gerenciador!");
+                    break;
+            }
+        } while(opcao != 0);
     }
 }
