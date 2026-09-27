@@ -13,4 +13,10 @@ public class Receita extends Transacao {
     public BigDecimal valorComSinal() {
         return this.valor.abs();
     }
+
+    @Override
+    public String toString() {
+        return String.format("[+] Receita:  %s | Valor: R$ %.2f | Categoria: %s | Data: %s",
+                descricao, valor, categoria, data);
+    }
 }

@@ -18,12 +18,7 @@ public class Despesa extends Transacao {
 
     @Override
     public String toString() {
-        return "Despesa{" +
-                "valor=" + valor +
-                ", descricao='" + descricao + '\'' +
-                ", categoria=" + categoria +
-                ", formaDePagamento='" + formaDePagamento + '\'' +
-                ", data=" + data +
-                '}';
+        return String.format("[-] Despesa: %s | Valor: R$ %.2f | Categoria: %s | Pagamento: %s | Data: %s",
+                descricao, valor, categoria, formaDePagamento, data);
     }
 }

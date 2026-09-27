@@ -85,7 +85,6 @@ public class Main {
                 case 4:
                     System.out.println("Digite o nome da categoria que deseja filtrar: ");
                     String categoriaFiltro = entrada.nextLine();
-                    entrada.nextLine();
 
                     System.out.println(minhaConta.filtrarPorCategoria(categoriaFiltro));
                     break;
