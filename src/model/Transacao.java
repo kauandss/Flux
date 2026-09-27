@@ -18,7 +18,7 @@ public abstract class Transacao {
         this.formaDePagamento = formaDePagamento;
     }
 
-    public Transacao(BigDecimal valor, LocalDate data, String categoria, String descricao){
+    public Transacao(BigDecimal valor, LocalDate data, String categoria, String descricao) {
         this(valor, data, categoria, descricao, null);
     }
 
