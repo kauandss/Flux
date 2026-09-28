@@ -19,21 +19,23 @@ public class Conta {
         return this.transacoes;
     }
 
-    public BigDecimal calcularSaldoAtual() {
-        BigDecimal saldoTotal = BigDecimal.ZERO;
-
-        for (Transacao transacaoAtual : transacoes) {
-            saldoTotal = saldoTotal.add(transacaoAtual.valorComSinal());
+    public BigDecimal calcularSomaLista(List<Transacao> transacoes) {
+        BigDecimal total = BigDecimal.ZERO;
+        for(Transacao t : transacoes){
+            total = total.add(t.valorComSinal());
         }
+        return total;
+    }
 
-        return saldoTotal;
+    public BigDecimal calcularSaldoAtual() {
+        return calcularSomaLista(this.transacoes);
     }
 
     public List<Transacao> filtrarPorCategoria(String nomeDaCategoria) {
         List<Transacao> transacoesFiltradas = new ArrayList<>();
 
         for (Transacao transacaoAtual : transacoes) {
-            if(transacaoAtual.getCategoria().getNome().equalsIgnoreCase(nomeDaCategoria)){
+            if (transacaoAtual.getCategoria().getNome().equalsIgnoreCase(nomeDaCategoria)) {
                 transacoesFiltradas.add(transacaoAtual);
             }
         }

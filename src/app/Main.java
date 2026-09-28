@@ -4,6 +4,7 @@ import model.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -87,9 +88,23 @@ public class Main {
                 case 4:
                     System.out.println("Digite o nome da categoria que deseja filtrar: ");
                     String categoriaFiltro = entrada.nextLine();
-                    System.out.printf("\n--- Filtragem (%s)\n", categoriaFiltro);
-                    for (Transacao t : minhaConta.filtrarPorCategoria(categoriaFiltro)) {
+                    List<Transacao> transacoesFiltradas = minhaConta.filtrarPorCategoria(categoriaFiltro);
+                    if (transacoesFiltradas.isEmpty()) {
+                        System.out.println("Nenhuma transação encontrada para esta categoria.");
+                        break;
+                    }
+                    System.out.println("--- Transações de " + categoriaFiltro + " ---");
+                    for (Transacao t : transacoesFiltradas) {
                         System.out.println(t);
+                    }
+
+                    BigDecimal totalCategoria = minhaConta.calcularSomaLista(transacoesFiltradas);
+                    totalCategoria = totalCategoria.abs();
+                    TipoCategoria tipo = transacoesFiltradas.get(0).getCategoria().getTipo();
+                    if (tipo == TipoCategoria.DESPESA) {
+                        System.out.printf("Total gasto: R$%.2f\n", totalCategoria);
+                    } else {
+                        System.out.printf("Total recebido: R$%.2f\n", totalCategoria);
                     }
                     break;
                 case 0:
