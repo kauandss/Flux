@@ -57,7 +57,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("\n--- Extrato ---");
-                    for(Transacao t : minhaConta.obterTodasTransacoes()){
+                    for (Transacao t : minhaConta.obterTodasTransacoes()) {
                         System.out.println(t);
                     }
                     System.out.printf("Saldo Total: R$ %.2f\n", minhaConta.calcularSaldoAtual());
@@ -87,8 +87,10 @@ public class Main {
                 case 4:
                     System.out.println("Digite o nome da categoria que deseja filtrar: ");
                     String categoriaFiltro = entrada.nextLine();
-
-                    System.out.println(minhaConta.filtrarPorCategoria(categoriaFiltro));
+                    System.out.printf("\n--- Filtragem (%s)\n", categoriaFiltro);
+                    for (Transacao t : minhaConta.filtrarPorCategoria(categoriaFiltro)) {
+                        System.out.println(t);
+                    }
                     break;
                 case 0:
                     System.out.println("Encerrando o Gerenciador!");
