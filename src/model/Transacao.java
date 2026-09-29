@@ -7,7 +7,6 @@ public abstract class Transacao {
     protected BigDecimal valor;
     protected String descricao;
     protected Categoria categoria;
-    protected String formaDePagamento;
     protected LocalDate data;
 
     public Transacao(BigDecimal valor, LocalDate data, Categoria categoria, String descricao) {
@@ -18,10 +17,6 @@ public abstract class Transacao {
     }
 
     public abstract BigDecimal valorComSinal();
-
-    public void setFormaDePagamento(String formaDePagamento) {
-        this.formaDePagamento = formaDePagamento;
-    }
 
     public BigDecimal getValor() {
         return valor;
@@ -35,10 +30,6 @@ public abstract class Transacao {
         return categoria;
     }
 
-    public String getFormaDePagamento() {
-        return formaDePagamento;
-    }
-
     public LocalDate getData() {
         return data;
     }
@@ -49,7 +40,6 @@ public abstract class Transacao {
                 "valor=" + valor +
                 ", descricao='" + descricao + '\'' +
                 ", categoria=" + categoria +
-                ", formaDePagamento='" + formaDePagamento + '\'' +
                 ", data=" + data +
                 '}';
     }

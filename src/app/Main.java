@@ -40,8 +40,6 @@ public class Main {
                     entrada.nextLine();
                     System.out.println("Descrição: ");
                     String descricaoDespesa = entrada.nextLine();
-                    System.out.println("Forma de pagamento: ");
-                    String formaDePagamentoDespesa = entrada.nextLine();
                     System.out.println("Criando Despesa...");
 
                     Categoria categoriaDespesa = switch (opcaoCategoriaDespesa) {
@@ -52,7 +50,7 @@ public class Main {
                     };
 
                     Despesa despesa = new Despesa(valorDespesa, LocalDate.now(), categoriaDespesa,
-                            descricaoDespesa, formaDePagamentoDespesa);
+                            descricaoDespesa);
 
                     minhaConta.adicionarTransacao(despesa);
                     break;

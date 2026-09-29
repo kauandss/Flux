@@ -4,11 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Despesa extends Transacao {
-    private String formaDePagamento;
 
-    public Despesa(BigDecimal valor, LocalDate data, Categoria categoria, String descricao, String formaDePagamento) {
+    public Despesa(BigDecimal valor, LocalDate data, Categoria categoria, String descricao) {
         super(valor, data, categoria, descricao);
-        this.formaDePagamento = formaDePagamento;
     }
 
     @Override
@@ -18,7 +16,7 @@ public class Despesa extends Transacao {
 
     @Override
     public String toString() {
-        return String.format("[-] Despesa: %s | Valor: R$ %.2f | Categoria: %s | Pagamento: %s | Data: %s",
-                descricao, valor, categoria, formaDePagamento, data);
+        return String.format("[-] Despesa: %s | Valor: R$ %.2f | Categoria: %s | Data: %s",
+                descricao, valor, categoria, data);
     }
 }
